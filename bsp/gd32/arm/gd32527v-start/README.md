@@ -1,6 +1,6 @@
 # GD32F527V-START 开发板 BSP 说明
 
-![GD32F527V-START](figures/gd32f527v_start.png)
+![GD32F527V-START](figures/gd32f527V_start.jpg)
 
 ## 一 外设支持
 
