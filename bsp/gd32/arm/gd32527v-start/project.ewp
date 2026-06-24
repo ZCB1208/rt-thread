@@ -1118,7 +1118,15 @@
         <settings>
             <name>BUILDACTION</name>
             <archiveVersion>2</archiveVersion>
-            <data />
+            <data>
+                <buildActions>
+                    <buildAction>
+                        <cmdline>python $PROJ_DIR$\tools\lua2inc.py $PROJ_DIR$\applications\scripts $PROJ_DIR$\applications\lua_script_table.inc</cmdline>
+                        <workingDirectory>$PROJ_DIR$</workingDirectory>
+                        <buildSequence>preCompile</buildSequence>
+                    </buildAction>
+                </buildActions>
+            </data>
         </settings>
     </configuration>
     <configuration>
@@ -2245,6 +2253,9 @@
         <file>
             <name>$PROJ_DIR$\applications\main.c</name>
         </file>
+        <file>
+            <name>$PROJ_DIR$\applications\lua_cmd.c</name>
+        </file>
     </group>
     <group>
         <name>CPU</name>
@@ -2540,7 +2551,7 @@
             <name>$PROJ_DIR$\packages\Lua-latest\lua-5.3.4\lgc.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\packages\Lua-latest\lua-5.3.4\linit.c</name>
+            <name>$PROJ_DIR$\applications\linit.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\packages\Lua-latest\lua-5.3.4\liolib.c</name>
@@ -2604,6 +2615,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\packages\Lua-latest\lua-5.3.4\lzio.c</name>
+        </file>
+    </group>
+    <group>
+        <name>scripts</name>
+        <file>
+            <name>$PROJ_DIR$\applications\scripts\led_blink.lua</name>
         </file>
     </group>
     <group>
