@@ -172,6 +172,7 @@
 
 /* POSIX (Portable Operating System Interface) layer */
 
+#define RT_USING_POSIX_FS
 
 /* Interprocess Communication (IPC) */
 
@@ -249,6 +250,9 @@
 /* XML: Extensible Markup Language */
 
 /* end of XML: Extensible Markup Language */
+#define PKG_USING_LUA
+#define PKG_USING_LUA_LATEST_VERSION
+#define LUA_USING_PORTING_V534
 /* end of language packages */
 
 /* multimedia packages */
@@ -301,6 +305,10 @@
 
 /* end of Kendryte SDK */
 
+/* MM32 HAL & SDK Drivers */
+
+/* end of MM32 HAL & SDK Drivers */
+
 /* WCH HAL & SDK Drivers */
 
 /* end of WCH HAL & SDK Drivers */
@@ -336,6 +344,10 @@
 /* FT32 HAL & SDK Drivers */
 
 /* end of FT32 HAL & SDK Drivers */
+
+/* NOVOSNS Drivers */
+
+/* end of NOVOSNS Drivers */
 /* end of HAL & SDK Drivers */
 
 /* sensors drivers */
