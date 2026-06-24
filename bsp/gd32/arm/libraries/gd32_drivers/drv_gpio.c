@@ -787,14 +787,47 @@ static rt_err_t gd32_pin_irq_enable(struct rt_device *device, rt_base_t pin, rt_
     return RT_EOK;
 }
 
+/**
+  * @brief  get pin number by name
+  * @param  name: pin name like "PB12" or "PB.12"
+  * @retval pin number or -RT_EINVAL on error
+  */
+static rt_base_t gd32_pin_get(const char *name)
+{
+    int port_idx;
+    int pin_num;
+
+    RT_ASSERT(name != RT_NULL);
+
+    /* format: P{port}{.pin}, e.g. PB12 or PB.12 */
+    if (name[0] != 'P' && name[0] != 'p')
+        return -RT_EINVAL;
+
+    port_idx = (name[1] >= 'a' ? name[1] - 'a' : name[1] - 'A');
+    if (port_idx < 0 || port_idx > 15)
+        return -RT_EINVAL;
+
+    /* parse pin number: skip dot if present */
+    if (name[2] == '.')
+        pin_num = atoi(&name[3]);
+    else
+        pin_num = atoi(&name[2]);
+
+    if (pin_num < 0 || pin_num > 15)
+        return -RT_EINVAL;
+
+    /* map: PA=0~15, PB=16~31, PC=32~47, ... */
+    return (rt_base_t)(port_idx * 16 + pin_num);
+}
+
 const static struct rt_pin_ops gd32_pin_ops = {
-    .pin_mode = gd32_pin_mode,
-    .pin_write = gd32_pin_write,
-    .pin_read = gd32_pin_read,
+    .pin_mode       = gd32_pin_mode,
+    .pin_write      = gd32_pin_write,
+    .pin_read       = gd32_pin_read,
+    .pin_get        = gd32_pin_get,
     .pin_attach_irq = gd32_pin_attach_irq,
     .pin_detach_irq = gd32_pin_detach_irq,
     .pin_irq_enable = gd32_pin_irq_enable,
-    RT_NULL,
 };
 
 /**
